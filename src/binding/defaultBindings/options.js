@@ -23,7 +23,7 @@ ko.bindingHandlers['options'] = {
     },
     'update': function (element, valueAccessor, allBindings) {
         var selectWasPreviouslyEmpty = element.length == 0;
-        var previousScrollTop = selectWasPreviouslyEmpty ? null : element.scrollTop;
+        var previousScrollTop = (!selectWasPreviouslyEmpty && element.multiple) ? element.scrollTop : null;
 
         var unwrappedArray = ko.utils.unwrapObservable(valueAccessor());
         var includeDestroyed = allBindings.get('optionsIncludeDestroyed');
